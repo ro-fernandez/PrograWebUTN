@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{>head}}
+
+<body>
+    <!-- HEADER CON BARRA DE NAVEGACION -->
+    
+    {{>header}}
+
+    <!-- CAROUSEL FOTOS DE VIAJES -->
+    <section class="container" id="viajes">
+      <h2 class="text-center mb-3">Viajes</h2>
+      <div class="d-flex justify-content-around">
+        <!-- CAROUSEL FOTOS DE VIAJES VERTICALES -->
+        <div id="carouselViajes" class="carousel carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselViajes" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselViajes" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselViajes" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselViajes" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselViajes" data-bs-slide-to="4" aria-label="Slide 5"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/viajes/vertical/dsc_0509.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/viajes/vertical/dsc_0159.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/viajes/vertical/dsc_0799.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/viajes/vertical/dsc_0374.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/viajes/vertical/dsc_0744.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselViajes" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselViajes" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <!-- CAROUSEL FOTOS DE VIAJES HORIZONTALES -->
+        <div id="carouselViajes2" class="carousel" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselViajes2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselViajes2" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselViajes2" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselViajes2" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselViajes2" data-bs-slide-to="4" aria-label="Slide 5"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/viajes/horizontal/milano.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/viajes/horizontal/sur.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/viajes/horizontal/venezia.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/viajes/horizontal/venezia2.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/viajes/horizontal/firenze.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselViajes2" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselViajes2" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="carouselNaturalezaBookInt">
+      <div class="d-flex justify-content-around">
+          <!-- CAROUSEL FOTOS DE NATURALEZA -->
+          <div class="container" id="naturaleza">
+            <h2 class="text-center mb-3">Naturaleza</h2>
+            <div id="carouselNaturaleza" class="carousel" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselNaturaleza" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselNaturaleza" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselNaturaleza" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselNaturaleza" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselNaturaleza" data-bs-slide-to="4" aria-label="Slide 5"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="10000">
+                  <div class="d-flex justify-content-center">
+                    <img src="./images/naturaleza/dsc_0118.jpg" class="d-block" alt="...">
+                  </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="10000">
+                  <div class="d-flex justify-content-center">
+                    <img src="./images/naturaleza/dsc_0533.jpg" class="d-block" alt="...">
+                  </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="10000">
+                  <div class="d-flex justify-content-center">
+                    <img src="./images/naturaleza/dsc_0110.jpg" class="d-block" alt="...">
+                  </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="10000">
+                  <div class="d-flex justify-content-center">
+                    <img src="./images/naturaleza/dsc_0338.jpg" class="d-block" alt="...">
+                  </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="10000">
+                  <div class="d-flex justify-content-center">
+                    <img src="./images/naturaleza/dsc_0004.jpg" class="d-block" alt="...">
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselNaturaleza" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselNaturaleza" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+          
+          <!-- CAROUSEL FOTOS DE BOOKS EN INTERIOR -->
+          <div class="container mt-3" id="booksInterior">
+            <h2 class="text-center mb-3">Books en Interior</h2>
+            <div id="carouselBookInterior" class="carousel" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselBookInterior" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselBookInterior" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselBookInterior" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselBookInterior" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselBookInterior" data-bs-slide-to="4" aria-label="Slide 5"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="d-flex justify-content-center">
+                    <img src="./images/book_interior/_6009031.jpg" class="d-block" alt="...">
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="d-flex justify-content-center">
+                    <img src="./images/book_interior/_6009032.jpg" class="d-block" alt="...">
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="d-flex justify-content-center">
+                    <img src="./images/book_interior/_6009038.jpg" class="d-block" alt="...">
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="d-flex justify-content-center">
+                    <img src="./images/book_interior/_6009036.jpg" class="d-block" alt="...">
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="d-flex justify-content-center">
+                    <img src="./images/book_interior/_6009030.jpg" class="d-block" alt="...">
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselBookInterior" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselBookInterior" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- CAROUSEL FOTOS DE BOOKS EN EXTERIOR -->
+    <section class="container mt-3" id="booksExterior">
+      <h2 class="text-center mb-3">Books en Exterior</h2>
+      <div class="d-flex justify-content-around">
+        <!-- CAROUSEL FOTOS DE BOOKS EN EXTERIOR VERTICALES -->
+        <div id="carouselBookExterior" class="carousel carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselBookExterior" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselBookExterior" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselBookExterior" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselBookExterior" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselBookExterior" data-bs-slide-to="4" aria-label="Slide 5"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/book_exterior/vertical/dsc_0322.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/book_exterior/vertical/dsc_0334.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/book_exterior/vertical/dsc_0340.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/book_exterior/vertical/dsc_0219.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/book_exterior/vertical/dsc_0227.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselBookExterior" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselBookExterior" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <!-- CAROUSEL FOTOS DE BOOKS EN EXTERIOR HORIZONTALES -->
+        <div id="carouselBookExterior2" class="carousel" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselBookExterior2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselBookExterior2" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselBookExterior2" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselBookExterior2" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselBookExterior2" data-bs-slide-to="4" aria-label="Slide 5"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/book_exterior/horizontal/dsc_0190.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/book_exterior/horizontal/dsc_0189.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/book_exterior/horizontal/dsc_0265.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/book_exterior/horizontal/dsc_0411.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+              <div class="d-flex justify-content-center">
+                <img src="./images/book_exterior/horizontal/dsc_0088.jpg" class="d-block" alt="...">
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselBookExterior2" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselBookExterior2" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER Y SCRIPTS -->
+    
+    {{>footer}}
+    
+</body>
+</html>

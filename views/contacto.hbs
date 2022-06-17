@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{>head}}
+
+<body>
+    <!-- HEADER CON BARRA DE NAVEGACION -->
+    
+    {{>header}}
+
+    <!-- FORMULARIO -->
+    <section class="container bg-pink">
+        <section>
+            <h1 class="text-center fs-2">Contacto</h1>
+            <form action="/enviar-email" method="post" class="p-2">
+                <div class="mb-3">
+                    <label for="apynom" class="form-label">Nombre y Apellido</label>
+                    <input type="text" class="form-control" name="apynom" required>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Correo Electrónico</label>
+                  <input type="email" class="form-control" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono / Celular</label>
+                    <input type="number" class="form-control" name="telefono" required>
+                </div>
+                <div class="mb-3">
+                    <label for="promo" class="form-label">Promo a consultar</label>
+                    <select class="form-select" name="promo">
+                        <option value="Ninguna promo seleccionada" selected>Seleccione una promo</option>
+                        <option value="Promo 1">Promo 1</option>
+                        <option value="Promo 2">Promo 2</option>
+                        <option value="Promo 3">Promo 3</option>
+                        <option value="Promo 4">Promo 4</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="asunto" class="form-label">Asunto</label>
+                    <input type="text" class="form-control" name="asunto" required>
+                </div>
+                <div class="mb-3">
+                    <label for="mensaje" class="form-label">Mensaje</label>
+                    <textarea class="form-control" name="mensaje" rows="3" required></textarea>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" name="politicas" required>
+                    <label class="form-check-label" for="politicas">Acepto las <a href="politicas" class="text-white">políticas de privacidad</a> (nunca compartiremos tus datos).</label>
+                </div>
+                <button type="submit" class="btn btn-pink">Enviar</button>
+              </form>
+        </section>
+    </section>
+
+    <!-- FOOTER Y SCRIPTS -->
+    
+    {{>footer}}
+
+</body>
+</html>
