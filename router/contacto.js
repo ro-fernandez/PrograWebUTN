@@ -27,7 +27,7 @@ contacto.post("/enviar-email", (req,res) =>{
     });
 
     let mailOptions = {
-        to: "rokfernandez@gmail.com",
+        to: "rofernandez.ph@gmail.com",
         from: "Remitente",
         subject: `${asunto}`,
         html: `<h1>Nueva consulta</h1>
