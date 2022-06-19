@@ -19,7 +19,7 @@ contacto.post("/enviar-email", (req,res) =>{
     let transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
         port: process.env.SMTP_PORT,
-        secure: false,
+        secure: true,
         auth: {
             type: "OAuth2",
             user: process.env.SMTP_USER,
