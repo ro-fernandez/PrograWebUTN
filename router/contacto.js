@@ -21,8 +21,9 @@ contacto.post("/enviar-email", (req,res) =>{
         port: process.env.SMTP_PORT,
         secure: false,
         auth: {
+            type: "OAuth2",
             user: process.env.SMTP_USER,
-            pass: process.env.SMTP_PASS
+            accessToken: process.env.SMTP_TOKEN
         }
     });
 
