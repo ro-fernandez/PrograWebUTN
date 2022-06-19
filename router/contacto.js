@@ -22,7 +22,7 @@ contacto.post("/enviar-email", (req,res) =>{
         secure: true,
         auth: {
             user: process.env.SMTP_USER,
-            accessToken: process.env.SMTP_TOKEN
+            pass: process.env.SMTP_PASS
         }
     });
 
