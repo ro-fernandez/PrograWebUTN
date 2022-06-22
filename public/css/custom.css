@@ -171,6 +171,10 @@ body{
     text-align: justify;
 }
 
+.table {
+    color: white;
+}
+
 /* ESCRITORIOS */
 
 @media (min-width: 992px) and (orientation:landscape){

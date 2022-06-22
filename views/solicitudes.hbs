@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{>head}}
+
+<body>
+    <!-- HEADER CON BARRA DE NAVEGACION -->
+    
+    {{>header}}
+
+    <div class="container p-2 bg-pink text-center">
+        <h2 class="pb-3">¡Gracias por ingresar!</h2>
+        <h3 class="fs-5">Email del usuario: {{user.email}}</h3>
+        <h3 class="fs-5 pb-3">DNI del usuario: {{user.dni}}</h3>
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="container p-2 bg-pink">
+        <h2 class="pb-3">Lista de reservaciones solicitadas</h2>
+        <button class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#myModalAdd">Añadir</button>
+        <table class="table" id="mytable">
+            <thead>
+                <tr>
+                    <th scope="col">ID Solicitud</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">DNI</th>
+                    <th scope="col">Promo</th>
+                    <th scope="col">Mes</th>
+                    <th scope="col">Quincena</th>
+                    <th scope="col">Día de la semana</th>
+                    <th scope="col">Horario</th>
+                    <th scope="col">Locación</th>
+                    <th scope="col">Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each results}}
+                    <tr>
+                        <td>{{id_solicitud}}</td>
+                        <td>{{email}}</td>
+                        <td>{{dni}}</td>
+                        <td>{{promo}}</td>
+                        <td>{{mes}}</td>
+                        <td>{{quincena}}</td>
+                        <td>{{dia}}</td>
+                        <td>{{horario}}</td>
+                        <td>{{locacion}}</td>
+                        <td><a href="#" class="btn btn-light edit">Editar</a></td>
+                        <td><a href="#" class="btn btn-dark delete">Cancelar</a></td>
+                    </tr>
+                {{/each}} 
+            </tbody>
+        </table>
+    </div>
+
+    <!-- MODAL PARA AGREGAR RESERVACION -->
+    
+    <form action="/save" method="post">
+        <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-dark" id="exampleModalLabel">Solicitud de turno</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <div class="modal-body">
+                        <div class="form-group p-2">
+                            <input type="email" name="email" class="form-control" placeholder="Ingrese su email" required>
+                        </div>
+                        <div class="form-group p-2">
+                            <input type="number" name="dni" class="form-control" placeholder="Ingrese su DNI" required>
+                        </div>
+                        <div class="form-group p-2">
+                            <select class="form-select" name="promo" required>
+                                <option value="Ninguna promo seleccionada" selected>Seleccione una promo</option>
+                                <option value="1">Promo 1</option>
+                                <option value="2">Promo 2</option>
+                                <option value="3">Promo 3</option>
+                                <option value="4">Promo 4</option>
+                            </select>
+                        </div>
+                        <div class="form-group p-2">
+                            <select class="form-select" name="mes" required>
+                                <option value="Ningún mes seleccionado" selected>Seleccione un mes</option>
+                                <option value="Enero">Enero</option>
+                                <option value="Febrero">Febrero</option>
+                                <option value="Marzo">Marzo</option>
+                                <option value="Abril">Abril</option>
+                                <option value="Mayo">Mayo</option>
+                                <option value="Junio">Junio</option>
+                                <option value="Julio">Julio</option>
+                                <option value="Agosto">Agosto</option>
+                                <option value="Septiembre">Septiembre</option>
+                                <option value="Octubre">Octubre</option>
+                                <option value="Noviembre">Noviembre</option>
+                                <option value="Diciembre">Diciembre</option>
+                            </select>
+                        </div>
+                        <div class="form-group p-2">
+                            <select class="form-select" name="quincena" required>
+                                <option value="Ninguna quincena seleccionada" selected>Seleccione una quincena</option>
+                                <option value="Primera">Primera Quincena (1 - 15)</option>
+                                <option value="Segunda">Segunda Quincena (16 - 31)</option>
+                            </select>
+                        </div>
+                        <div class="form-group p-2">
+                            <select class="form-select" name="dia" required>
+                                <option value="Ningún dia seleccionado" selected>Seleccione un día de la semana</option>
+                                <option value="Domingo">Domingo</option>
+                                <option value="Lunes">Lunes</option>
+                                <option value="Martes">Martes</option>
+                                <option value="Miércoles">Miércoles</option>
+                                <option value="Jueves">Jueves</option>
+                                <option value="Viernes">Viernes</option>
+                                <option value="Sábado">Sábado</option>
+                            </select>
+                        </div>
+                        <div class="form-group p-2">
+                            <select class="form-select" name="horario" required>
+                                <option value="Ningún horario seleccionado" selected>Seleccione un horario</option>
+                                <option value="Mañana">Turno Mañana (8:00 - 12:00)</option>
+                                <option value="Tarde">Turno Tarde (14:00 - 18:00)</option>
+                            </select>
+                        </div>
+                        <div class="form-group p-2">
+                            <input type="text" name="locacion" class="form-control" placeholder="Ingrese la locación deseada" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- FOOTER Y SCRIPTS -->
+    
+    {{>footer}}
+
+</body>
+</html>

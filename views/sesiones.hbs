@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{>head}}
+
+<body>
+    <!-- HEADER CON BARRA DE NAVEGACION -->
+    
+    {{>header}}
+
+    <!-- FORMULARIO -->
+    <section class="container bg-pink">
+        <section>
+            <h1 class="text-center fs-2">Ingreso al portal de reservaciones</h1>
+            <p class="text-center">Importante: Luego de enviar su solicitud, en las próximas 48 horas recibirá un mail de confirmación junto a la fecha y horario en los que se realizará el book, así como el medio de pago y otras especificaciones necesarias.
+            La modificación de su solicitud afectará a la misma sólo si aún no se le ha enviado el mail de confirmación, por lo que intente modificarla lo antes posible ante cualquier inconveniente.
+            Las cancelaciones serán consideradas y reembolsadas en tanto y en cuanto sean avisadas con suficiente anticipación. Cancelar con anticipación permite ofrecer una mayor cantidad de fechas disponibles a nuestros clientes.</p>
+            <form action="/registro" method="post">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Correo Electrónico</label>
+                  <input type="email" class="form-control" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="dni" class="form-label">DNI</label>
+                    <input type="number" class="form-control" name="dni" required>
+                </div>
+                <button type="submit" class="btn btn-pink">Ingresar</button>
+            </form>
+        </section>
+    </section>
+
+    <!-- FOOTER Y SCRIPTS -->
+    
+    {{>footer}}
+
+</body>
+</html>
