@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{>head}}
+
+<body>
+    <!-- HEADER CON BARRA DE NAVEGACION -->
+    
+    {{>header}}
+
+    <!-- FORMULARIO -->
+    <div class="container p-2 bg-pink">
+        <h2 class="pb-3">Reservaciones solicitadas</h2>
+        <table class="table" id="solicitudesTotales">
+            <thead>
+                <tr>
+                    <th scope="col">ID Solicitud</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">DNI</th>
+                    <th scope="col">Promo</th>
+                    <th scope="col">Mes</th>
+                    <th scope="col">Quincena</th>
+                    <th scope="col">Día de la semana</th>
+                    <th scope="col">Horario</th>
+                    <th scope="col">Locación</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each results}}
+                    <tr>
+                        <td>{{id_solicitud}}</td>
+                        <td>{{email}}</td>
+                        <td>{{dni}}</td>
+                        <td>{{promo}}</td>
+                        <td>{{mes}}</td>
+                        <td>{{quincena}}</td>
+                        <td>{{dia}}</td>
+                        <td>{{horario}}</td>
+                        <td>{{locacion}}</td>
+                    </tr>
+                {{/each}} 
+            </tbody>
+        </table>
+    </div>
+
+    <!-- FOOTER Y SCRIPTS -->
+    
+    {{>footer}}
+
+</body>
+</html>

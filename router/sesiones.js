@@ -17,8 +17,25 @@ router.get('/sesiones', (req, res) => {
 });
 
 router.post('/registro', (req, res) => {
-    req.session.my_variable = req.body;
-    res.redirect('solicitudes');
+    req.session.regenerate(function (err) {
+        if (err) next(err)
+        req.session.user = req.body;
+        req.session.save(function (err) {
+            if (err) return next(err)
+            res.redirect('solicitudes');
+        })
+    })
+});
+
+router.post('/logout', function (req, res, next) {
+    req.session.user = null
+    req.session.save(function (err) {
+      if (err) next(err)
+      req.session.regenerate(function (err) {
+        if (err) next(err)
+        res.redirect('sesiones')
+      })
+    })
 });
 
 // Conexión a base de datos
@@ -38,8 +55,7 @@ conn.connect((err) => {
 // Sesiones y Select
 
 router.get('/solicitudes', (req, res) => {
-    const user = req.session.my_variable;
-    delete req.session.my_variable;
+    const user = req.session.user;
     if(typeof(user) === 'undefined'){
         res.redirect('sesiones');
         throw "SESIÓN CERRADA";
@@ -63,6 +79,39 @@ router.post('/save', (req, res) => {
     let query = conn.query(sql, data, (err, results) => {
         if(err) throw err;
         res.redirect('/solicitudes');
+    });
+});
+
+// Update
+
+router.post('/update', (req, res) => {
+    let sql = "UPDATE solicitudes SET email = '" + req.body.email + "', dni = '" + req.body.dni + "', promo = '" + req.body.promo + "', mes = '" + req.body.mes + "', quincena = '" + req.body.quincena + "', dia = '" + req.body.dia + "', horario = '" + req.body.horario + "', locacion = '" + req.body.locacion + "'WHERE id_solicitud =" + req.body.id_solicitud;
+    let query = conn.query(sql, (err, results) => {
+        if(err) throw err;
+        res.redirect('/solicitudes');
+    });
+});
+
+// Delete
+
+router.post('/delete', (req, res) => {
+    let sql = "DELETE from solicitudes WHERE id_solicitud =" + req.body.id_solicitud;
+    let query = conn.query(sql, (err, results) => {
+        if(err) throw err;
+        res.redirect('/solicitudes');
+    });
+});
+
+// Muestra de BBDD total para administrador
+
+router.get('/solicitudes43875244', (req, res) => {
+    let sql = "SELECT * FROM solicitudes";
+    let query = conn.query(sql, (err, results) => {
+        if(err) throw err;
+        res.render('../views/solicitudes43875244', {
+            titulo: 'Fotografía | Reservas Totales',
+            results: results
+        });
     });
 });
 

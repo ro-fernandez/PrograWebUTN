@@ -12,13 +12,16 @@
         <h2 class="pb-3">¡Gracias por ingresar!</h2>
         <h3 class="fs-5">Email del usuario: {{user.email}}</h3>
         <h3 class="fs-5 pb-3">DNI del usuario: {{user.dni}}</h3>
+        <form action="/logout" method="post">
+            <button type="submit" class="btn btn-pink">Cerrar sesión</button>
+        </form>
     </div>
 
     <!-- FORMULARIO -->
     <div class="container p-2 bg-pink">
-        <h2 class="pb-3">Lista de reservaciones solicitadas</h2>
-        <button class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#myModalAdd">Añadir</button>
-        <table class="table" id="mytable">
+        <h2 class="pb-3">Reservaciones solicitadas</h2>
+        <a href="javascript:void(0);" id="btnAdd" class="btn btn-pink" data-email="{{user.email}}" data-dni="{{user.dni}}">Añadir</a>
+        <table class="table" id="solicitudes">
             <thead>
                 <tr>
                     <th scope="col">ID Solicitud</th>
@@ -45,8 +48,8 @@
                         <td>{{dia}}</td>
                         <td>{{horario}}</td>
                         <td>{{locacion}}</td>
-                        <td><a href="#" class="btn btn-light edit">Editar</a></td>
-                        <td><a href="#" class="btn btn-dark delete">Cancelar</a></td>
+                        <td><a href="javascript:void(0);" class="btn btn-light edit" data-id_solicitud="{{id_solicitud}}" data-email="{{email}}" data-dni="{{dni}}" data-promo="{{promo}}" data-mes="{{mes}}" data-quincena="{{quincena}}" data-dia="{{dia}}" data-horario="{{horario}}" data-locacion="{{locacion}}">Editar</a></td>
+                        <td><a href="javascript:void(0);" class="btn btn-dark delete" data-id_solicitud="{{id_solicitud}}">Cancelar</a></td>
                     </tr>
                 {{/each}} 
             </tbody>
@@ -56,7 +59,7 @@
     <!-- MODAL PARA AGREGAR RESERVACION -->
     
     <form action="/save" method="post">
-        <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -67,10 +70,10 @@
                     </div>
                 <div class="modal-body">
                         <div class="form-group p-2">
-                            <input type="email" name="email" class="form-control" placeholder="Ingrese su email" required>
+                            <input type="email" name="email" class="form-control email" placeholder="Ingrese su email" required>
                         </div>
                         <div class="form-group p-2">
-                            <input type="number" name="dni" class="form-control" placeholder="Ingrese su DNI" required>
+                            <input type="number" name="dni" class="form-control dni" placeholder="Ingrese su DNI" required>
                         </div>
                         <div class="form-group p-2">
                             <select class="form-select" name="promo" required>
@@ -131,6 +134,116 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <!-- MODAL PARA EDITAR RESERVACION -->
+    
+    <form action="/update" method="post">
+        <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-dark" id="exampleModalLabel">Modificar turno</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <div class="modal-body">
+                        <div class="form-group p-2">
+                            <input type="email" name="email" class="form-control email" placeholder="Ingrese su email" required>
+                        </div>
+                        <div class="form-group p-2">
+                            <input type="number" name="dni" class="form-control dni" placeholder="Ingrese su DNI" required>
+                        </div>
+                        <div class="form-group p-2">
+                            <select class="form-select promo" name="promo" required>
+                                <option value="Ninguna promo seleccionada" selected>Seleccione una promo</option>
+                                <option value="1">Promo 1</option>
+                                <option value="2">Promo 2</option>
+                                <option value="3">Promo 3</option>
+                                <option value="4">Promo 4</option>
+                            </select>
+                        </div>
+                        <div class="form-group p-2">
+                            <select class="form-select mes" name="mes" required>
+                                <option value="Ningún mes seleccionado" selected>Seleccione un mes</option>
+                                <option value="Enero">Enero</option>
+                                <option value="Febrero">Febrero</option>
+                                <option value="Marzo">Marzo</option>
+                                <option value="Abril">Abril</option>
+                                <option value="Mayo">Mayo</option>
+                                <option value="Junio">Junio</option>
+                                <option value="Julio">Julio</option>
+                                <option value="Agosto">Agosto</option>
+                                <option value="Septiembre">Septiembre</option>
+                                <option value="Octubre">Octubre</option>
+                                <option value="Noviembre">Noviembre</option>
+                                <option value="Diciembre">Diciembre</option>
+                            </select>
+                        </div>
+                        <div class="form-group p-2">
+                            <select class="form-select quincena" name="quincena" required>
+                                <option value="Ninguna quincena seleccionada" selected>Seleccione una quincena</option>
+                                <option value="Primera">Primera Quincena (1 - 15)</option>
+                                <option value="Segunda">Segunda Quincena (16 - 31)</option>
+                            </select>
+                        </div>
+                        <div class="form-group p-2">
+                            <select class="form-select dia" name="dia" required>
+                                <option value="Ningún dia seleccionado" selected>Seleccione un día de la semana</option>
+                                <option value="Domingo">Domingo</option>
+                                <option value="Lunes">Lunes</option>
+                                <option value="Martes">Martes</option>
+                                <option value="Miércoles">Miércoles</option>
+                                <option value="Jueves">Jueves</option>
+                                <option value="Viernes">Viernes</option>
+                                <option value="Sábado">Sábado</option>
+                            </select>
+                        </div>
+                        <div class="form-group p-2">
+                            <select class="form-select horario" name="horario" required>
+                                <option value="Ningún horario seleccionado" selected>Seleccione un horario</option>
+                                <option value="Mañana">Turno Mañana (8:00 - 12:00)</option>
+                                <option value="Tarde">Turno Tarde (14:00 - 18:00)</option>
+                            </select>
+                        </div>
+                        <div class="form-group p-2">
+                            <input type="text" name="locacion" class="form-control locacion" placeholder="Ingrese la locación deseada" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" name="id_solicitud" class="id_solicitud">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+        <!-- MODAL PARA ELIMINAR RESERVACION -->
+    
+    <form action="/delete" method="post">
+        <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-dark" id="exampleModalLabel">Modificar turno</h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                            <p class="text-dark">¿Desea eliminar esta reservación?</p>
+                    </div>
+                    <div class="modal-footer">
+                            <input type="hidden" name="id_solicitud" class="id_solicitud">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Eliminar</button>
                     </div>
                 </div>
             </div>

@@ -29,12 +29,12 @@ body{
 
 .navbar-toggler {
 	position: relative;
-    left: 42%;
-    margin-bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .navegadorConImagenes img{
-    width: 70%;
+    width: 90%;
 }
 
 .textoNavegador{
@@ -67,13 +67,15 @@ body{
     display: none;
 }
 
-.textoPrincipalMobile{
+.bloquePrincipalMobile{
     align-items: center;
-    width: 87%;
+}
+
+.imgPrincipalMobile{
+    width: 100%;
 }
 
 .imgPrincipal{
-    width: 10rem;
     padding: 0.2rem;
 }
 
@@ -171,13 +173,23 @@ body{
     text-align: justify;
 }
 
-.table {
+.table{
     color: white;
+}
+
+/* TABLETAS DE DIEZ PULGADAS */
+
+@media (min-width: 768px){
+
+    .navegadorConImagenes img{
+        width: 60%;
+    }
+    
 }
 
 /* ESCRITORIOS */
 
-@media (min-width: 992px) and (orientation:landscape){
+@media (min-width: 1200px) and (orientation:landscape){
 
     .navegadorConImagenes img{
         width: 30%;
@@ -191,17 +203,16 @@ body{
         text-align: left;
     }
 
+    .bloquePrincipalMobile{
+        display: none;
+    }
+
     .bloquePrincipalLandscape{
         display: block;
     }
 
-    .textoPrincipalMobile{
-        display: none;
-    }
-
-    .imgPrincipal{
-        width: auto;
-        padding: auto;
+    .navegadorConImagenes{
+        margin: 0;
     }
 
     #carouselViajes2{
@@ -265,5 +276,10 @@ body{
     
     .creditoFinal{
         font-size: 1.1rem;
+    }
+
+    .inicioSesion{
+        margin-left: 23rem;
+        margin-right: 23rem;
     }
 }
