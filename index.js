@@ -1,6 +1,5 @@
 require('dotenv').config();
 const express = require('express');
-const session = require('express-session');
 const app = express();
 const hbs = require('hbs');
 
@@ -15,7 +14,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use(require('./router/sesiones'));
+app.use(require('./router/reservaciones'));
 app.use(require('./router/contacto'));
 app.use(require('./router/router'));
 

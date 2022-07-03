@@ -9,7 +9,7 @@
     {{>header}}
 
     <div class="container p-2 bg-pink text-center">
-        <h2 class="pb-3">¡Gracias por ingresar!</h2>
+        <h2 class="pb-3">¡Gracias por ingresar, {{user.apynom}}!</h2>
         <h3 class="fs-5">Email del usuario: {{user.email}}</h3>
         <h3 class="fs-5 pb-3">DNI del usuario: {{user.dni}}</h3>
         <form action="/logout" method="post">
@@ -18,52 +18,57 @@
     </div>
 
     <!-- FORMULARIO -->
+
     <div class="container p-2 bg-pink">
         <h2 class="pb-3">Reservaciones solicitadas</h2>
-        <a href="javascript:void(0);" id="btnAdd" class="btn btn-pink" data-email="{{user.email}}" data-dni="{{user.dni}}">Añadir</a>
-        <table class="table" id="solicitudes">
-            <thead>
-                <tr>
-                    <th scope="col">ID Solicitud</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">DNI</th>
-                    <th scope="col">Promo</th>
-                    <th scope="col">Mes</th>
-                    <th scope="col">Quincena</th>
-                    <th scope="col">Día de la semana</th>
-                    <th scope="col">Horario</th>
-                    <th scope="col">Locación</th>
-                    <th scope="col">Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each results}}
+        <a href="javascript:void(0);" id="btnAdd" class="btn btn-pink" data-email="{{user.email}}" data-dni="{{user.dni}}" data-apynom="{{user.apynom}}">Nueva reservación</a>
+        <div class="table-responsive text-nowrap">
+            <table class="table w-auto" id="solicitudes">
+                <thead>
                     <tr>
-                        <td>{{id_solicitud}}</td>
-                        <td>{{email}}</td>
-                        <td>{{dni}}</td>
-                        <td>{{promo}}</td>
-                        <td>{{mes}}</td>
-                        <td>{{quincena}}</td>
-                        <td>{{dia}}</td>
-                        <td>{{horario}}</td>
-                        <td>{{locacion}}</td>
-                        <td><a href="javascript:void(0);" class="btn btn-light edit" data-id_solicitud="{{id_solicitud}}" data-email="{{email}}" data-dni="{{dni}}" data-promo="{{promo}}" data-mes="{{mes}}" data-quincena="{{quincena}}" data-dia="{{dia}}" data-horario="{{horario}}" data-locacion="{{locacion}}">Editar</a></td>
-                        <td><a href="javascript:void(0);" class="btn btn-dark delete" data-id_solicitud="{{id_solicitud}}">Cancelar</a></td>
+                        <th scope="col">ID Solicitud</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">DNI</th>
+                        <th scope="col">Nombre y Apellido</th>
+                        <th scope="col">Promo</th>
+                        <th scope="col">Mes</th>
+                        <th scope="col">Quincena</th>
+                        <th scope="col">Día de la semana</th>
+                        <th scope="col">Horario</th>
+                        <th scope="col">Locación</th>
+                        <th scope="col">Acción</th>
                     </tr>
-                {{/each}} 
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {{#each results}}
+                        <tr>
+                            <td>{{id_solicitud}}</td>
+                            <td>{{email}}</td>
+                            <td>{{dni}}</td>
+                            <td>{{apynom}}</td>
+                            <td>{{promo}}</td>
+                            <td>{{mes}}</td>
+                            <td>{{quincena}}</td>
+                            <td>{{dia}}</td>
+                            <td>{{horario}}</td>
+                            <td>{{locacion}}</td>
+                            <td><a href="javascript:void(0);" class="btn btn-light edit" data-id_solicitud="{{id_solicitud}}" data-email="{{email}}" data-dni="{{dni}}" data-apynom="{{apynom}}" data-promo="{{promo}}" data-mes="{{mes}}" data-quincena="{{quincena}}" data-dia="{{dia}}" data-horario="{{horario}}" data-locacion="{{locacion}}">Editar</a></td>
+                            <td><a href="javascript:void(0);" class="btn btn-danger delete" data-id_solicitud="{{id_solicitud}}">Cancelar</a></td>
+                        </tr>
+                    {{/each}} 
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <!-- MODAL PARA AGREGAR RESERVACION -->
     
     <form action="/save" method="post">
-        <div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title text-dark" id="exampleModalLabel">Solicitud de turno</h5>
+                        <h5 class="modal-title text-dark" id="addModalLabel">Nueva reservación</h5>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Cerrar">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -74,6 +79,9 @@
                         </div>
                         <div class="form-group p-2">
                             <input type="number" name="dni" class="form-control dni" placeholder="Ingrese su DNI" required>
+                        </div>
+                        <div class="form-group p-2">
+                            <input type="text" name="apynom" class="form-control apynom" placeholder="Ingrese su nombre y su apellido" required>
                         </div>
                         <div class="form-group p-2">
                             <select class="form-select" name="promo" required>
@@ -143,11 +151,11 @@
     <!-- MODAL PARA EDITAR RESERVACION -->
     
     <form action="/update" method="post">
-        <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title text-dark" id="exampleModalLabel">Modificar turno</h5>
+                        <h5 class="modal-title text-dark" id="editModalLabel">Modificar reservación</h5>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Cerrar">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -158,6 +166,9 @@
                         </div>
                         <div class="form-group p-2">
                             <input type="number" name="dni" class="form-control dni" placeholder="Ingrese su DNI" required>
+                        </div>
+                        <div class="form-group p-2">
+                            <input type="text" name="apynom" class="form-control apynom" placeholder="Ingrese su nombre y su apellido" required>
                         </div>
                         <div class="form-group p-2">
                             <select class="form-select promo" name="promo" required>
@@ -225,25 +236,26 @@
         </div>
     </form>
 
-        <!-- MODAL PARA ELIMINAR RESERVACION -->
+    <!-- MODAL PARA ELIMINAR RESERVACION -->
     
     <form action="/delete" method="post">
-        <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title text-dark" id="exampleModalLabel">Modificar turno</h5>
+                        <h5 class="modal-title text-dark" id="deleteModalLabel">Cancelar reservación</h5>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Cerrar">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                            <p class="text-dark">¿Desea eliminar esta reservación?</p>
+                            <p class="text-dark">¿Está seguro que desea eliminar esta reservación?</p>
+                            <p class="text-dark">Esta acción no podrá revertirse.</p>
                     </div>
                     <div class="modal-footer">
-                            <input type="hidden" name="id_solicitud" class="id_solicitud">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn btn-primary">Eliminar</button>
+                        <input type="hidden" name="id_solicitud" class="id_solicitud">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mantener reservación</button>
+                        <button type="submit" class="btn btn-danger">Cancelar reservación</button>
                     </div>
                 </div>
             </div>

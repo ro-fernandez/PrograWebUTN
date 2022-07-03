@@ -3,9 +3,11 @@ $(document).ready(function () {
     $('#btnAdd').click (function () {
         let email = $(this).data('email');
         let dni = $(this).data('dni');
+        let apynom = $(this).data('apynom');
         $('#AddModal').modal('show');
         $('.email').val(email);
         $('.dni').val(dni);
+        $('.apynom').val(apynom);
     })
 
     // Mostrar datos al modal para editar reservacion
@@ -13,6 +15,7 @@ $(document).ready(function () {
         let id_solicitud = $(this).data('id_solicitud');
         let email = $(this).data('email');
         let dni = $(this).data('dni');
+        let apynom = $(this).data('apynom');
         let promo = $(this).data('promo');
         let mes = $(this).data('mes');
         let quincena = $(this).data('quincena');
@@ -23,6 +26,7 @@ $(document).ready(function () {
         $('.id_solicitud').val(id_solicitud);
         $('.email').val(email);
         $('.dni').val(dni);
+        $('.apynom').val(apynom);
         $('.promo').val(promo);
         $('.mes').val(mes);
         $('.quincena').val(quincena);
