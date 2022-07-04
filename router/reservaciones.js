@@ -2,48 +2,48 @@ const { Router } = require('express');
 const router  = new Router();
 
 // const mysql = require('mysql');
-const session = require('express-session');
+// const session = require('express-session');
 
-// Sesiones
+// // Sesiones
 
-router.use(session({
-    secret: '123456',
-    resave: true,
-    saveUninitialized: true
-}));
+// router.use(session({
+//     secret: '123456',
+//     resave: true,
+//     saveUninitialized: true
+// }));
 
-router.get('/reservaciones', (req, res) => {
-    // if(req.session.user != null){
-    //     res.redirect('solicitudes');
-    // }
-    // else{
+// router.get('/reservaciones', (req, res) => {
+//     if(req.session.user != null){
+//         res.redirect('solicitudes');
+//     }
+//     else{
         res.render('reservaciones', {
             titulo: 'Fotografía | Iniciar Sesión'
         });
-    // }
-});
+//     }
+// });
 
-router.post('/registro', (req, res) => {
-    req.session.regenerate(function (err) {
-        if (err) next(err)
-        req.session.user = req.body;
-        req.session.save(function (err) {
-            if (err) return next(err)
-            res.redirect('solicitudes');
-        })
-    })
-});
+// router.post('/registro', (req, res) => {
+//     req.session.regenerate(function (err) {
+//         if (err) next(err)
+//         req.session.user = req.body;
+//         req.session.save(function (err) {
+//             if (err) return next(err)
+//             res.redirect('solicitudes');
+//         })
+//     })
+// });
 
-router.post('/logout', function (req, res, next) {
-    req.session.user = null
-    req.session.save(function (err) {
-      if (err) next(err)
-      req.session.regenerate(function (err) {
-        if (err) next(err)
-        res.redirect('reservaciones')
-      })
-    })
-});
+// router.post('/logout', function (req, res, next) {
+//     req.session.user = null
+//     req.session.save(function (err) {
+//       if (err) next(err)
+//       req.session.regenerate(function (err) {
+//         if (err) next(err)
+//         res.redirect('reservaciones')
+//       })
+//     })
+// });
 
 // // Conexión a base de datos
 
@@ -59,25 +59,25 @@ router.post('/logout', function (req, res, next) {
 //     console.log("CONEXIÓN ESTABLECIDA");
 // });
 
-// Select de las solicitudes de la sesión iniciada
+// // Select de las solicitudes de la sesión iniciada
 
-router.get('/solicitudes', (req, res) => {
-    const user = req.session.user;
-    if(user == null){
-        res.redirect('reservaciones');
-    }
+// router.get('/solicitudes', (req, res) => {
+//     const user = req.session.user;
+//     if(user == null){
+//         res.redirect('reservaciones');
+//     }
 //     else{
 //         let sql = "SELECT * FROM solicitudes WHERE email = '" + user.email + "' AND dni = '" + user.dni + "'";
 //         let query = conn.query(sql, (err, results) => {
 //             if(err) throw err;
-            res.render('../views/solicitudes', {
-                titulo: 'Fotografía | Reservas',
-                user
-                // results: results
-            });
+//             res.render('../views/solicitudes', {
+//                 titulo: 'Fotografía | Reservas',
+//                 user,
+//                 results: results
+//             });
 //         });
 //     }
-});
+// });
 
 // // Insert de nueva solicitud de la sesión iniciada
 
