@@ -13,14 +13,14 @@ router.use(session({
 }));
 
 router.get('/reservaciones', (req, res) => {
-    if(req.session.user != null){
-        res.redirect('solicitudes');
-    }
-    else{
+    // if(req.session.user != null){
+    //     res.redirect('solicitudes');
+    // }
+    // else{
         res.render('reservaciones', {
             titulo: 'Fotografía | Iniciar Sesión'
         });
-    }
+    // }
 });
 
 // router.post('/registro', (req, res) => {
