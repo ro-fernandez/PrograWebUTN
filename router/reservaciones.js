@@ -12,7 +12,7 @@ const router  = new Router();
 //     saveUninitialized: true
 // }));
 
-// router.get('/reservaciones', (req, res) => {
+router.get('/reservaciones', (req, res) => {
 //     if(req.session.user != null){
 //         res.redirect('solicitudes');
 //     }
@@ -21,7 +21,7 @@ const router  = new Router();
             titulo: 'Fotografía | Iniciar Sesión'
         });
 //     }
-// });
+});
 
 // router.post('/registro', (req, res) => {
 //     req.session.regenerate(function (err) {
