@@ -8,10 +8,10 @@
     
     {{>header}}
 
-    <div class="container p-2 bg-pink text-center">
+    <div class="container p-2 text-center">
         <h2 class="pb-3">¡Gracias por ingresar, {{user.apynom}}!</h2>
-        <h3 class="fs-5">Email del usuario: {{user.email}}</h3>
-        <h3 class="fs-5 pb-3">DNI del usuario: {{user.dni}}</h3>
+        <h3 class="fs-5">Tu email: {{user.email}}</h3>
+        <h3 class="fs-5 pb-3">Tu DNI: {{user.dni}}</h3>
         <form action="/logout" method="post">
             <button type="submit" class="btn btn-pink">Cerrar sesión</button>
         </form>
@@ -19,7 +19,7 @@
 
     <!-- FORMULARIO -->
 
-    <div class="container p-2 bg-pink">
+    <div class="container p-2">
         <h2 class="pb-3">Reservaciones solicitadas</h2>
         <a href="javascript:void(0);" id="btnAdd" class="btn btn-pink" data-email="{{user.email}}" data-dni="{{user.dni}}" data-apynom="{{user.apynom}}">Nueva reservación</a>
         <div class="table-responsive text-nowrap">

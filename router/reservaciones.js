@@ -13,9 +13,14 @@ router.use(session({
 }));
 
 router.get('/reservaciones', (req, res) => {
-    res.render('reservaciones', {
-        titulo: 'Fotografía | Iniciar Sesión'
-    });
+    if(req.session.user != null){
+        res.redirect('solicitudes');
+    }
+    else{
+        res.render('reservaciones', {
+            titulo: 'Fotografía | Iniciar Sesión'
+        });
+    }
 });
 
 router.post('/registro', (req, res) => {
@@ -58,19 +63,20 @@ conn.connect((err) => {
 
 router.get('/solicitudes', (req, res) => {
     const user = req.session.user;
-    if(typeof(user) === 'undefined'){
+    if(user == null){
         res.redirect('reservaciones');
-        throw "SESIÓN CERRADA";
     }
-    let sql = "SELECT * FROM solicitudes WHERE email = '" + user.email + "' AND dni = '" + user.dni + "'";
-    let query = conn.query(sql, (err, results) => {
-        if(err) throw err;
-        res.render('../views/solicitudes', {
-            titulo: 'Fotografía | Reservas',
-            user,
-            results: results
+    else{
+        let sql = "SELECT * FROM solicitudes WHERE email = '" + user.email + "' AND dni = '" + user.dni + "'";
+        let query = conn.query(sql, (err, results) => {
+            if(err) throw err;
+            res.render('../views/solicitudes', {
+                titulo: 'Fotografía | Reservas',
+                user,
+                results: results
+            });
         });
-    });
+    }
 });
 
 // Insert de nueva solicitud de la sesión iniciada

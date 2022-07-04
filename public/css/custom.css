@@ -14,10 +14,6 @@ body{
     font-weight: 500;
 }
 
-.bg-pink{
-    background-color:#ce8795;
-}
-
 .btn-pink{
     background-color: #b6616e;
     color: white;
@@ -179,6 +175,12 @@ body{
 
 .mapa{
     text-align: center;
+}
+
+.mapa iframe{
+    width: 100%;
+    height: 12rem;
+    border: none;
 }
 
 /* TABLETAS DE DIEZ PULGADAS */
