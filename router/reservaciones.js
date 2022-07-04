@@ -23,27 +23,27 @@ router.get('/reservaciones', (req, res) => {
     }
 });
 
-router.post('/registro', (req, res) => {
-    req.session.regenerate(function (err) {
-        if (err) next(err)
-        req.session.user = req.body;
-        req.session.save(function (err) {
-            if (err) return next(err)
-            res.redirect('solicitudes');
-        })
-    })
-});
+// router.post('/registro', (req, res) => {
+//     req.session.regenerate(function (err) {
+//         if (err) next(err)
+//         req.session.user = req.body;
+//         req.session.save(function (err) {
+//             if (err) return next(err)
+//             res.redirect('solicitudes');
+//         })
+//     })
+// });
 
-router.post('/logout', function (req, res, next) {
-    req.session.user = null
-    req.session.save(function (err) {
-      if (err) next(err)
-      req.session.regenerate(function (err) {
-        if (err) next(err)
-        res.redirect('reservaciones')
-      })
-    })
-});
+// router.post('/logout', function (req, res, next) {
+//     req.session.user = null
+//     req.session.save(function (err) {
+//       if (err) next(err)
+//       req.session.regenerate(function (err) {
+//         if (err) next(err)
+//         res.redirect('reservaciones')
+//       })
+//     })
+// });
 
 // // Conexión a base de datos
 
@@ -61,23 +61,23 @@ router.post('/logout', function (req, res, next) {
 
 // Select de las solicitudes de la sesión iniciada
 
-router.get('/solicitudes', (req, res) => {
-    const user = req.session.user;
-    if(user == null){
-        res.redirect('reservaciones');
-    }
-    else{
-        let sql = "SELECT * FROM solicitudes WHERE email = '" + user.email + "' AND dni = '" + user.dni + "'";
-        let query = conn.query(sql, (err, results) => {
-            if(err) throw err;
-            res.render('../views/solicitudes', {
-                titulo: 'Fotografía | Reservas',
-                user,
-                results: results
-            });
-        });
-    }
-});
+// router.get('/solicitudes', (req, res) => {
+//     const user = req.session.user;
+//     if(user == null){
+//         res.redirect('reservaciones');
+//     }
+//     else{
+//         let sql = "SELECT * FROM solicitudes WHERE email = '" + user.email + "' AND dni = '" + user.dni + "'";
+//         let query = conn.query(sql, (err, results) => {
+//             if(err) throw err;
+//             res.render('../views/solicitudes', {
+//                 titulo: 'Fotografía | Reservas',
+//                 user,
+//                 results: results
+//             });
+//         });
+//     }
+// });
 
 // // Insert de nueva solicitud de la sesión iniciada
 
