@@ -70,7 +70,7 @@ router.get('/solicitudes', (req, res) => {
         let sql = "SELECT * FROM solicitudes WHERE email = '" + user.email + "' AND dni = '" + user.dni + "'";
         let query = conn.query(sql, (err, results) => {
             if(err) throw err;
-            res.render('../views/solicitudes', {
+            res.render('solicitudes', {
                 titulo: 'Fotografía | Reservas',
                 user,
                 results: results
@@ -116,7 +116,7 @@ router.get('/solicitudes43875244', (req, res) => {
     let sql = "SELECT * FROM solicitudes";
     let query = conn.query(sql, (err, results) => {
         if(err) throw err;
-        res.render('../views/solicitudes43875244', {
+        res.render('solicitudes43875244', {
             titulo: 'Fotografía | Reservas Totales',
             results: results
         });
